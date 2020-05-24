@@ -1,0 +1,10 @@
+version: "3"
+services:
+  app:
+    build: ./docker
+    env_file: sendgrid.env
+    tty: true
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/go/src/sendgrid
