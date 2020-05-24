@@ -71,7 +71,8 @@ func dynamicTemplateEmail() []byte {
 	e := mail.NewEmail(name, address)
 	m.SetFrom(e)
 
-	m.SetTemplateID("<ブラウザで登録したテンプレートのIDを入力>")
+	tempateID := os.Getenv("TEMPLATE_ID_1")
+	m.SetTemplateID(tempateID)
 
 	var (
 		SubjectTopStr            = "送信したユーザーより"
