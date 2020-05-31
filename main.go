@@ -1,27 +1,33 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
+	"net/http"
 	"os"
 
+	"github.com/gorilla/handlers"
+	"github.com/gorilla/mux"
 	"github.com/sendgrid/sendgrid-go"
 	"github.com/sendgrid/sendgrid-go/helpers/mail"
 )
 
 func main() {
-
-	// helperPost()
-	// notHelperPost()
-
+	fmt.Printf("%v\n", "start")
+	r := mux.NewRouter()
+	r.HandleFunc("/helper", helperPost)
+	r.HandleFunc("/notHelper", notHelperPost)
 	// DynamicTemplateを活用してのメール送信
-	sendDynamicTemplateEmail()
+	r.HandleFunc("/dynamicTemplate", sendDynamicTemplateEmail)
+
+	log.Fatal(http.ListenAndServe(":8000", handlers.CORS()(r)))
 
 }
 
 var myEmail = os.Getenv("EMAIL")
 
-func helperPost() {
+func helperPost(w http.ResponseWriter, r *http.Request) {
 
 	var (
 		SubjectTopStr            = "送信したユーザーより"
@@ -45,9 +51,15 @@ func helperPost() {
 		fmt.Println(response.Body)
 		fmt.Println(response.Headers)
 	}
+	byteResponse, err := json.Marshal(response)
+	if err != nil {
+		log.Fatalf("%v", err)
+		return
+	}
+	w.Write(byteResponse)
 }
 
-func sendDynamicTemplateEmail() {
+func sendDynamicTemplateEmail(w http.ResponseWriter, r *http.Request) {
 	request := sendgrid.GetRequest(os.Getenv("SENDGRID_API_KEY"), "/v3/mail/send", "https://api.sendgrid.com")
 	request.Method = "POST"
 	var Body = dynamicTemplateEmail()
@@ -60,6 +72,12 @@ func sendDynamicTemplateEmail() {
 		fmt.Println(response.Body)
 		fmt.Println(response.Headers)
 	}
+	byteResponse, err := json.Marshal(response)
+	if err != nil {
+		log.Fatalf("%v", err)
+		return
+	}
+	w.Write(byteResponse)
 }
 
 func dynamicTemplateEmail() []byte {
@@ -105,7 +123,7 @@ func dynamicTemplateEmail() []byte {
 	return mail.GetRequestBody(m)
 }
 
-func notHelperPost() {
+func notHelperPost(w http.ResponseWriter, r *http.Request) {
 
 	request := sendgrid.GetRequest(os.Getenv("SENDGRID_API_KEY"), "/v3/mail/send", "https://api.sendgrid.com")
 	request.Method = "POST"
@@ -139,4 +157,10 @@ func notHelperPost() {
 		fmt.Println(response.Body)
 		fmt.Println(response.Headers)
 	}
+	byteResponse, err := json.Marshal(response)
+	if err != nil {
+		log.Fatalf("%v", err)
+		return
+	}
+	w.Write(byteResponse)
 }
