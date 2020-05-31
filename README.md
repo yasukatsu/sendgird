@@ -55,5 +55,5 @@ $ curl http://0.0.0.0:8000/notHelper
 
 - sendDynamicTemplateEmail
 ```
-curl http://0.0.0.0:8000/dynamicTemplate
+$ curl http://0.0.0.0:8000/dynamicTemplate
 ```
