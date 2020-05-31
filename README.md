@@ -33,5 +33,27 @@
       </div>
     </body>
   </html>
+```
 
+## Usage
+1. [こちら](https://sendgrid.kke.co.jp/blog/?p=11818)を参考にAPIキーを作成する。
+2. `cat sendgrid.env.example | sed s/\<SENDGRID_API_KEY\>/<ここに作成したAPIキーを入力する>/g > sendgrid.env`を実施し、sendgrid.envを作成する。
+3. sendgrid.envの`EMAIL=`の後に送信したいアドレスを入れる。  
+※ DynamicTemplateを利用したい場合は別途テンプレートを登録する必要がある。
+4. `$ docker-compose up -d`でコンテナを起動させる。
+
+### メールの送信
+- helperPost
+```
+$ curl http://0.0.0.0:8000/helper
+```
+
+- notHelperPost
+```
+$ curl http://0.0.0.0:8000/notHelper
+```
+
+- sendDynamicTemplateEmail
+```
+curl http://0.0.0.0:8000/dynamicTemplate
 ```
