@@ -106,11 +106,11 @@ func dynamicTemplateEmail() []byte {
 	}
 	p.AddTos(tos...)
 
-	imgURL := "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.rbbtoday.com%2Farticle%2F2016%2F03%2F04%2F140287.html&psig=AOvVaw10U9FxxRFUPvABLOFNMbw9&ust=1590392902820000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJChtrWBzOkCFQAAAAAdAAAAABAD"
+	imgURL := "https://fittio.jp/wp-content/themes/fittio.jp/common/img/fittio_logoB_4c.svg"
 	p.SetDynamicTemplateData("img", imgURL)
 
 	p.SetDynamicTemplateData("subject", subject)
-	p.SetDynamicTemplateData("NAME_KANA", "氏名（ふりがな）")
+	p.SetDynamicTemplateData("NAME_KANA", "田中太郎")
 	p.SetDynamicTemplateData("AGE", "年齢")
 	p.SetDynamicTemplateData("SEX", "性別")
 	p.SetDynamicTemplateData("TEL1", "電話番号1")
