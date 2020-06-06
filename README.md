@@ -12,7 +12,10 @@
     </head>
     <body>
       <div>
-        <p><img src="{{img}}"></p>
+
+        <p>
+            <img src="画像のURL" height=300 weight=200>
+        </p>
 
         ――――――――――<br>
         ■応募者情報<br>
