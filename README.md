@@ -14,7 +14,7 @@
       <div>
 
         <p>
-            <img src="http://cdn.mcauto-images-production.sendgrid.net/11d8c5d0483cad40/e93529e8-b788-469b-ada1-3e4e16fed305/1313x758.png" height=300 weight=200>
+            <img src="画像のURL" height=300 weight=200>
         </p>
 
         ――――――――――<br>
