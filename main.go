@@ -129,10 +129,10 @@ func notHelperPost(w http.ResponseWriter, r *http.Request) {
 		{
 			"to": [
 				{
-					"email": {{myaddress}}
+					"email": "test@example.com"
 				}
 			],
-			"subject": "' + FakePass + '{$SUBJECT_TOP_STR}{$OFCTOUR_OR_WKTRIAL_APPENDIX}応募がありました{$SUBJECT_PREMIUM_STR}。[問い合わせNo：{$EntryMgrNo}]"
+			"subject": "Sending with Twilio SendGrid is Fun"
 		}
 	],
 	"from": {
