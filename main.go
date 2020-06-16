@@ -106,9 +106,6 @@ func dynamicTemplateEmail() []byte {
 	}
 	p.AddTos(tos...)
 
-	imgURL := "https://fittio.jp/wp-content/themes/fittio.jp/common/img/fittio_logoB_4c.svg"
-	p.SetDynamicTemplateData("img", imgURL)
-
 	p.SetDynamicTemplateData("subject", subject)
 	p.SetDynamicTemplateData("NAME_KANA", "田中太郎")
 	p.SetDynamicTemplateData("AGE", "年齢")
@@ -132,10 +129,10 @@ func notHelperPost(w http.ResponseWriter, r *http.Request) {
 		{
 			"to": [
 				{
-					"email": {{myaddress}}
+					"email": "test@example.com"
 				}
 			],
-			"subject": "' + FakePass + '{$SUBJECT_TOP_STR}{$OFCTOUR_OR_WKTRIAL_APPENDIX}応募がありました{$SUBJECT_PREMIUM_STR}。[問い合わせNo：{$EntryMgrNo}]"
+			"subject": "Sending with Twilio SendGrid is Fun"
 		}
 	],
 	"from": {
