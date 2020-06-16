@@ -51,7 +51,8 @@
 $ curl http://0.0.0.0:8000/helper
 ```
 
-- notHelperPost
+- notHelperPost  
+※ `"email": "test@example.com"`を変更する必要あり。。。
 ```
 $ curl http://0.0.0.0:8000/notHelper
 ```
