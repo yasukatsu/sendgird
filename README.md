@@ -12,7 +12,10 @@
     </head>
     <body>
       <div>
-        <p><img src="{{img}}"></p>
+
+        <p>
+            <img src="画像のURL" height=300 weight=200>
+        </p>
 
         ――――――――――<br>
         ■応募者情報<br>
@@ -40,7 +43,7 @@
 2. `cat sendgrid.env.example | sed s/\<SENDGRID_API_KEY\>/<ここに作成したAPIキーを入力する>/g > sendgrid.env`を実施し、sendgrid.envを作成する。
 3. sendgrid.envの`EMAIL=`の後に送信したいアドレスを入れる。  
 ※ DynamicTemplateを利用したい場合は別途テンプレートを登録する必要がある。
-4. `$ docker-compose up -d`でコンテナを起動させる。
+4. `make up`でコンテナを起動させる。
 
 ### メールの送信
 - helperPost
@@ -48,7 +51,8 @@
 $ curl http://0.0.0.0:8000/helper
 ```
 
-- notHelperPost
+- notHelperPost  
+※ `"email": "test@example.com"`を変更する必要あり。。。
 ```
 $ curl http://0.0.0.0:8000/notHelper
 ```
